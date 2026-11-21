@@ -38,3 +38,10 @@ than passing a flag.
 `math.gcd(0, 0)`, and the pair `(1, 0)` is the canonical Bézout
 certificate for that degenerate case.  If your code assumes `g > 0`,
 check for zero before dividing.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
